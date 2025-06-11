@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head><title>Bejelentkezés - Dogrina</title>
+<link rel="manifest" href="/static/manifest.json">
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/static/service-worker.js');
+  }
+</script>
+</head>
+<body style="background-image: url('/static/tappancs.jpg'); background-size: cover;">
+<h2>Bejelentkezés</h2>
+<form method="POST">
+  Felhasználónév: <input type="text" name="username"><br>
+  Jelszó: <input type="password" name="password"><br>
+  <button type="submit">Belépés</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head><title>Foglalások</title>
+<link rel="manifest" href="/static/manifest.json">
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/static/service-worker.js');
+  }
+</script>
+</head>
+<body style="background-image: url('/static/tappancs.jpg'); background-size: cover;">
+<h2>Foglalások</h2>
+<a href="/logout">Kijelentkezés</a>
+<form method="POST" action="/uj_foglalas">
+  Kutya neve: <input type="text" name="kutya_nev">
+  Érkezés: <input type="date" name="erkezes">
+  Távozás: <input type="date" name="tavozas">
+  Kennel #: <input type="number" name="kennel">
+  <button type="submit">Hozzáadás</button>
+</form>
+<ul>
+{% for f in foglalasok %}
+  <li>{{ f['kutya_nev'] }} | {{ f['erkezes'] }} → {{ f['tavozas'] }} | Kennel: {{ f['kennel'] }} 
+      <a href="/torol/{{ f['id'] }}">❌</a></li>
+{% endfor %}
+</ul>
+</body>
+</html>
